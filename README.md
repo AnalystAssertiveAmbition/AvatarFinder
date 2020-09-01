@@ -1,9 +1,9 @@
-#AvatarFinder + MarketFinder
-###requirements
+# AvatarFinder + MarketFinder
+### requirements
  - Python 3
  - PostgreSQL + 150GB SSD Storage
 
-####create tables and indexes in psql
+#### create tables and indexes in psql
 ```sql
 CREATE TABLE users(
     steam64id bigint,
