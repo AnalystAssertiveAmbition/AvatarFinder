@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>steamfinder demo</title>
+</head>
+<body>
+<form>
+    <label for="minprice">Min. price:</label>
+    <input type="number" min="30" max="2000" name="minprice" value="{{ minprice }}">
+    <label for="maxprice">Max. price:</label>
+    <input type="number" min="30" max="2000" name="maxprice" value="{{ maxprice }}">
+    <br/>
+    <label for="disable_csgo">Disable CSGO</label>
+    <input type="checkbox" name="disable_csgo" {% if not csgo %}checked{% endif %}>
+    <label for="disable_dota2">Disable Dota2</label>
+    <input type="checkbox" name="disable_dota2" {% if not dota %}checked{% endif %}>
+    <label for="disable_tf2">Disable TF2</label>
+    <input type="checkbox" name="disable_tf2" {% if not tf %}checked{% endif %}>
+    <br/>
+    <input type="submit">
+    <br/><br/>
+</form>
+<a href="https://github.com/AnalystAssertiveAmbition/AvatarFinder" target="_href"><h1>Source Code</h1></a>
+{% for listing in listings %}
+<a href="/avatar-finder?avatar={{ listing.owner_avatar }}&name={{ listing.owner_name }}" target="_blank">
+    {{ listing.time }}
+    <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/{{ listing.owner_avatar }}.jpg">
+    {{ listing.owner_name }} - {{ listing.item_name }} - ${{ listing.price }}
+</a><br/><br/>
+{% endfor %}
+</body>
+</html>
